@@ -1,0 +1,40 @@
+.game-container {
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    background-color: hsl(36, 11%, 91%);
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 500px;
+    position: relative;
+}
+
+.button-container {
+    width: 450px;
+    height: 100px;
+    display: flex;
+    position: absolute;
+    bottom: 80px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.button-container > button {
+    height: 75px;
+    width: 75px;
+}
+
+.score-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: absolute;
+    top: 40px;
+    width: 80%;
+}
+
+.score-container > p {
+    margin: 0;
+    border-bottom: solid;
+}

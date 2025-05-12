@@ -1,26 +1,8 @@
-function getCompChoice() {
-    return Math.round(Math.random() * 2);
-}
-
-function getHumanChoice() {
-    let choice = prompt("Rock, Paper or Scissors: ");
-
-    switch (choice.charAt(0).toLowerCase()) {
-        case "r":
-            return 0;
-        case "p":
-            return 1;
-        case "s":
-            return 2;
-    }
-}
-
 humanScore = 0;
 compScore = 0;
 
-function playRound() {
-    humanChoice = getHumanChoice();
-    compChoice = getCompChoice();
+function playRound(humanChoice) {
+    const compChoice = getCompChoice();
 
     console.log(humanChoice);
     console.log(compChoice);
@@ -65,18 +47,39 @@ function playRound() {
     }
 }
 
-function playGame() {
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
+function getCompChoice() {
+    return Math.round(Math.random() * 2);
+}
 
-    if (compScore > humanScore) {
-        console.log("Computer won the games!");
-    } else {
-        console.log("Human won the games!");
+const btn = document.querySelectorAll(".button-container > button");
+
+btn.forEach((button) => {
+    button.addEventListener("click", () => {
+        playRound(Number(button.className));
+        updateScore();
+        checkWinner();
+    });
+});
+
+function updateScore() {
+    const scores = document.querySelectorAll(".score-container > p");
+
+    scores[0].textContent = "Player Score: " + humanScore;
+    scores[1].textContent = "Computer Score: " + compScore;
+}
+
+function checkWinner() {
+    if (humanScore >= 3) {
+        alert("You win!");
+        reset();
+    } else if (compScore >= 3) {
+        alert("The computer won!");
+        reset();
     }
 }
 
-playGame();
+function reset() {
+    compScore = 0;
+    humanScore = 0;
+    updateScore();
+}
