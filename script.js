@@ -7,40 +7,42 @@ function playRound(humanChoice) {
     console.log(humanChoice);
     console.log(compChoice);
 
+    const result = document.querySelector(".text-role");
+
     // This checks for a draw
     if (humanChoice === compChoice) {
-        console.log("Draw!");
+        result.textContent = "Draw!";
         return;
     }
 
     // Checks if human won with rock
     if (humanChoice === 0) {
         if (compChoice === 1) {
-            console.log("Computer won!");
+            result.textContent = "Computer Won!";
             compScore++;
             return;
         } else {
-            console.log("Human won!");
+            result.textContent = "You Won!";
             humanScore++;
             return;
         }
     } else if (humanChoice === 1) {
         if (compChoice === 0) {
-            console.log("Human won!");
+            result.textContent = "You Won!";
             humanScore++;
             return;
         } else {
-            console.log("Computer won!");
+            result.textContent = "Computer Won!";
             compScore++;
             return;
         }
     } else {
         if (compChoice === 0) {
-            console.log("Computer won!");
+            result.textContent = "Computer Won!";
             compScore++;
             return;
         } else {
-            console.log("Human won!");
+            result.textContent = "You Won!";
             humanScore++;
             return;
         }
